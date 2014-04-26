@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html       xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+               <h:panelGrid id="registro_grid" columns="2" style="margin-bottom:10px;">  
+                        <f:facet name="header">  
+                            <p:messages />  
+                        </f:facet>  
+
+                        <h:outputLabel for="registro_nombre" value="Nombre:" styleClass="label_ingreso"/>  
+                        <p:inputText id="registro_nombre"   
+                                     value="# {Controlador.usuario.usu_nombre}" 
+                                     />  
+
+                        <h:outputLabel for="registro_telefono" value="Telefono: " styleClass="label_ingreso"/>  
+                        <p:inputText id="registro_telefono"   
+                                     value="# {Controlador.usuario.telefono}"   
+                                     />
+
+                        <h:outputLabel for="registro_direccion" value="Dirección:  " styleClass="label_ingreso"/>  
+                        <p:inputText id="registro_direccion"   
+                                     value="# {Controlador.usuario.usu_direccion}" 
+                                     />   
+
+                        <h:outputLabel for="registro_contraseña" value="Contraseña:  " styleClass="label_ingreso"/>  
+                        <p:inputText id="registro_contraseña"   
+                                     value="# {Controlador.password}"   
+                                     />  
+                        <h:outputLabel for="registro_repetir_contraseña" value="Repetir Contraseña:  " styleClass="label_ingreso"/>  
+                        <p:inputText id="registro_repetir_contraseña"   
+                                     value="# {Controlador.password2}"    
+                                     />  
+                    </h:panelGrid>  
+                    <h:commandButton  value="Entrar" id="registro_btnAll1" 
+                                       action="# {Controlador.RegistrarUsuario()}"/>  
+</html>

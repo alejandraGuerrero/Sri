@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>SRI-MANIZALES</title>
+    </h:head>
+
+    <h:form>
+        <center>
+            <p:accordionPanel>  
+                <p:tab title="Ingresar Incidente">  
+                    <h:panelGrid columns="2" cellpadding="10">  
+                        <p:graphicImage value="/images/godfather/godfather1.jpg" />  
+                        <h:form id="formregistroinci">
+                            <center>
+                                <h:outputLabel value="Registro Incidencia"/>
+                            </center>
+                            <p:panelGrid columns="2"  style="width: 95%">
+
+                                <h:outputLabel id="outputLabelComuna" value="Seleccione La comuna:" />
+                                <h:selectOneMenu id="selectOneMenuComuna" value="#{Controlador.comuna.com_codigo}">
+                                    <f:selectItem itemLabel="Seleccione" itemValue="1" />  
+                                    <f:selectItems value="#{Controlador.listacomunas}" var="comuna" itemLabel="#{comuna.com_nombre}" itemValue="#{comuna.com_codigo}" />                              
+                                    <p:ajax update="selectOneMenuBarrio" event="change"
+                                            listener="#{Controlador.cargarBarrio()}" /> 
+                                </h:selectOneMenu>
+
+                                <h:outputLabel id="outputLabelBarrio" value="Barrio" style="width: 100%"/>
+                                <h:selectOneMenu id="selectOneMenuBarrio" value="#{Controlador.barrio.bar_codigo}" style="width: 100%">
+                                    <f:selectItem itemLabel="Seleccione" itemValue="0" />  
+                                    <f:selectItems value="#{Controlador.lstbarrio}" var="barrio" itemLabel="#{barrio.bar_nombre}" itemValue="#{barrio.bar_codigo}" />                              
+                                </h:selectOneMenu>
+
+                                <h:outputLabel id="outputLabelTipoIncidencia" value="Tipo Incidencia" style="width: 100%"/>
+                                <h:selectOneMenu id="selectOneMenuTipoIncidencia" value="#{Controlador.tipoInscidente.tipinc_codigo}" style="width: 100%">
+                                    <f:selectItem itemLabel="Seleccione" itemValue="" />  
+                                    <f:selectItem itemLabel="#{Controlador.listaTipoInscidentes}" itemValue="#{Controlador.tipoInscidente.tipinc_codigo}" />                              
+                                </h:selectOneMenu>              
+
+
+                                <h:outputLabel id="outputLabelDescripcion" value="Descripción" style="width: 100%"/>
+                                <h:inputText id="inputTextDescripcion" value="#{administrador.incidente.inc_descripcion}" title="Descripción" style="width: 100%"/>
+                            </p:panelGrid>
+
+                        </h:form>  
+                    </h:panelGrid>  
+                </p:tab>  
+                <p:tab title="Listar Incidente">  
+                    <h:panelGrid columns="2" cellpadding="10">  
+                        <p:graphicImage value="/images/godfather/godfather2.jpg" />  
+                        <h:outputText value="Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream.   
+                                      In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy,   
+                                      killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows." />  
+                    </h:panelGrid>  
+                </p:tab>  
+                <p:tab title="Godfather Part III">  
+                    <h:panelGrid columns="2" cellpadding="10">  
+                        <p:graphicImage value="/images/godfather/godfather3.jpg" />  
+                        <h:outputText value="After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family.   
+                                      Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate." />  
+                    </h:panelGrid>  
+                </p:tab>  
+            </p:accordionPanel>  
+
+        </center>
+    </h:form>
+
+</html>
+

@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>SRI-MANIZALES</title>
+    </h:head>
+
+    <h:form>
+        <center>
+            <h:panelGrid columns="2" cellpadding="10">  
+                <p:graphicImage value="/images/godfather/godfather3.jpg" />  
+                <h:outputText value="Bienvenidos Al Sistema de Registro de Incidentes de Manizales"/>  
+            </h:panelGrid>
+            <p:accordionPanel style="width: 500px;">  
+                <p:tab title="Ingresar">  
+                    <p:graphicImage value="/images/godfather/godfather1.jpg" />  
+                    <h:panelGrid columns="2">  
+                        <f:facet name="header">  
+                            <p:messages />  
+                        </f:facet>  
+
+                        <h:outputLabel for="firstname" value="Numero Movil:" styleClass="label_ingreso"/>  
+                        <h:inputText id="firstname"   value="#{Controlador.usuario.telefono}"
+                                     />  
+
+                        <h:outputLabel for="surname" value="Contraseña: *" styleClass="label_ingreso"/>  
+                        <h:inputText id="surname"   value="#{Controlador.usuario.password}"
+                                     /> 
+
+
+                    </h:panelGrid>  
+                    <h:commandButton   value="Entrar" id="btnAll" 
+                                       action="#{Controlador.ValidarUsuario}"/>  
+
+
+                </p:tab>  
+                <p:tab title="Registrarte">  
+                    <p:graphicImage value="/images/godfather/godfather1.jpg" />  
+                    <ui:include src="/registrar.xhtml"/>
+                </p:tab>  
+                <p:tab title="Conoce Nuestro proyecto">  
+                    <h:panelGrid columns="2" cellpadding="10">  
+                        <p:graphicImage value="/images/godfather/godfather3.jpg" />  
+                        <h:outputText value="After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family.   
+                                      Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate." />  
+                    </h:panelGrid>  
+                </p:tab>  
+            </p:accordionPanel>  
+        </center>
+    </h:form>
+
+</html>
+

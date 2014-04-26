@@ -16,16 +16,24 @@ public class Incidente {
     private int inc_codigoIncidente;
     private String inc_descripcionIncidente;
     private Date inc_fechaIncidente;
+    private TipoInscidente tipo_incidente;
+    private TipoIngresoInsidente tipo_ingreso_incidente;
+    private Comuna comuna;
+    private Barrio barrio; 
 
     public Incidente() {
     }
 
-    public Incidente(int inc_codigoIncidente, String inc_descripcionIncidente, Date inc_fechaIncidente) {
+    public Incidente(int inc_codigoIncidente, String inc_descripcionIncidente, Date inc_fechaIncidente, TipoInscidente tipo_incidente, TipoIngresoInsidente tipo_ingreso_incidente, Comuna comuna, Barrio barrio) {
         this.inc_codigoIncidente = inc_codigoIncidente;
         this.inc_descripcionIncidente = inc_descripcionIncidente;
         this.inc_fechaIncidente = inc_fechaIncidente;
+        this.tipo_incidente = tipo_incidente;
+        this.tipo_ingreso_incidente = tipo_ingreso_incidente;
+        this.comuna = comuna;
+        this.barrio = barrio;
     }
-
+    
     public int getInc_codigoIncidente() {
         return inc_codigoIncidente;
     }
@@ -49,6 +57,37 @@ public class Incidente {
     public void setInc_fechaIncidente(Date inc_fechaIncidente) {
         this.inc_fechaIncidente = inc_fechaIncidente;
     }
-    
-    
+
+    public TipoInscidente getTipo_incidente() {
+        return tipo_incidente;
+    }
+
+    public void setTipo_incidente(TipoInscidente tipo_incidente) {
+        this.tipo_incidente = tipo_incidente;
+    }
+
+    public TipoIngresoInsidente getTipo_ingreso_incidente() {
+        return tipo_ingreso_incidente;
+    }
+
+    public void setTipo_ingreso_incidente(TipoIngresoInsidente tipo_ingreso_incidente) {
+        this.tipo_ingreso_incidente = tipo_ingreso_incidente;
+    }
+
+    public Comuna getComuna() {
+        return comuna;
+    }
+
+    public void setComuna(Comuna comuna) {
+        this.comuna = comuna;
+    }
+
+    public Barrio getBarrio() {
+        return barrio;
+    }
+
+    public void setBarrio(Barrio barrio) {
+        this.barrio = barrio;
+    }
+ 
 }

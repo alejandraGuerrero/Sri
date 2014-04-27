@@ -9,49 +9,66 @@
         <title>SRI-MANIZALES</title>
     </h:head>
 
-    <h:form>
+    <h:form style="background-image: url('/resources/fondo.jgp');">
         <center>
             <h:panelGrid columns="2" cellpadding="10">  
-                <p:graphicImage value="/images/godfather/godfather3.jpg" />  
-                <h:outputText value="Bienvenidos Al Sistema de Registro de Incidentes de Manizales"/>  
-            </h:panelGrid>
-            <p:accordionPanel style="width: 500px;">  
-                <p:tab title="Ingresar">  
-                    <p:graphicImage value="/images/godfather/godfather1.jpg" />  
-                    <h:panelGrid columns="2">  
-                        <f:facet name="header">  
-                            <p:messages />  
-                        </f:facet>  
+                <p:graphicImage value="/resources/logo_opt.png" />  
+                <h:outputText value="Bienvenidos Al Sistema de Registro de Incidentes de Manizales" style="font-size:22px;color: #205B91;
+                              font-family: inherit;
+                              font-family:Homer Simpson,cursive;"/>  
+        </h:panelGrid>
+        <p:accordionPanel style="width: 500px;">  
+            <p:tab title="Ingresar">  
+                <p:graphicImage value="/resources/mundo_opt.png" />  
+                <h:panelGrid columns="2">  
+                    <f:facet name="header">  
+                        <p:messages />  
+                    </f:facet>  
 
-                        <h:outputLabel for="firstname" value="Numero Movil:" styleClass="label_ingreso"/>  
-                        <h:inputText id="firstname"   value="#{Controlador.usuario.telefono}"
-                                     />  
+                    <h:outputLabel for="firstname" value="Numero Movil:" styleClass="label_ingreso"/>  
+                    <h:inputText id="firstname"   value="#{Controlador.usuario.telefono}"
+                                 />  
 
-                        <h:outputLabel for="surname" value="Contraseña: *" styleClass="label_ingreso"/>  
-                        <h:inputText id="surname"   value="#{Controlador.usuario.password}"
-                                     /> 
-
-
-                    </h:panelGrid>  
-                    <h:commandButton   value="Entrar" id="btnAll" 
-                                       action="#{Controlador.ValidarUsuario}"/>  
+                    <h:outputLabel for="surname" value="Contraseña: *" styleClass="label_ingreso"/>  
+                    <h:inputText id="surname"   value="#{Controlador.usuario.password}"
+                                 /> 
 
 
-                </p:tab>  
-                <p:tab title="Registrarte">  
-                    <p:graphicImage value="/images/godfather/godfather1.jpg" />  
-                    <ui:include src="/registrar.xhtml"/>
-                </p:tab>  
-                <p:tab title="Conoce Nuestro proyecto">  
-                    <h:panelGrid columns="2" cellpadding="10">  
-                        <p:graphicImage value="/images/godfather/godfather3.jpg" />  
-                        <h:outputText value="After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family.   
-                                      Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate." />  
-                    </h:panelGrid>  
-                </p:tab>  
-            </p:accordionPanel>  
-        </center>
-    </h:form>
+                </h:panelGrid>  
+                <h:commandButton   value="Entrar" id="btnAll" 
+                                   action="#{Controlador.ValidarUsuario}"/>  
+
+
+            </p:tab>  
+            <p:tab title="Registrarte">  
+                <p:graphicImage value="/resources/idea_opt.png" />  
+                <ui:include src="/registrar.xhtml"/>
+            </p:tab>  
+            <p:tab title="Conoce Nuestro proyecto">  
+                <h:panelGrid columns="2" cellpadding="10">  
+                    <p:graphicImage value="/resources/mani_opt.jpg" />  
+                    <h:outputText value="SISTEMNA DE REGISTRO DE INCIDENTES" style="text-align:center;"/>
+
+                    <h:outputText value="Patrocinado por:"/>
+                    <h:outputText value="Generación de cultura ciudadana, Secretaría de Gobierno, Alcaldía de Manizales"/>
+
+                    <h:outputText value="Objetivo: "/>
+                    <h:outputText value="El sistema de información para el fomento de la cultura ciudadana, corresponde a un sistema de 
+                                  información a través del cual han de interactuar los ciudadanos con la secretaría de Gobierno, en  
+                                  este sistema se registran situaciones consideradas sucesos se reportan."/>
+
+                    <h:outputText value="Medios de Reporte: "/>
+                    <ul>
+                        <li>Mensajes de texto</li>
+                        <li>Llamadas telefónicas</li>
+                        <li>Acceso directo en la aplicación a través de internet</li>
+                    </ul>                    
+                </h:panelGrid>  
+                <h:outputText value="Con la informacion alli recolectada se deberan generar reportes que ayuden a el control de dichos incidentes"/>
+            </p:tab>  
+        </p:accordionPanel>  
+    </center>
+</h:form>
 
 </html>
 

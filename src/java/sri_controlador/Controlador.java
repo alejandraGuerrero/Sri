@@ -36,6 +36,9 @@ public class Controlador {
     private TipoInscidente tipoInscidente = new TipoInscidente();
     private TipoIngresoInsidente tipoIngresoInsidente = new TipoIngresoInsidente();
     private List<TipoIngresoInsidente> listatipoingresoincidente = new ArrayList<TipoIngresoInsidente>();
+    private Incidente incidente = new Incidente();
+    private List<Incidente> listaIncidentes = new  ArrayList<Incidente>();
+    private boolean boolEditar=false;
     
 
     public Controlador() {
@@ -150,8 +153,48 @@ public class Controlador {
     public void setListatipoingresoincidente(List<TipoIngresoInsidente> listatipoingresoincidente) {
         this.listatipoingresoincidente = listatipoingresoincidente;
     }
+
+    public Incidente getIncidente() {
+        return incidente;
+    }
+
+    public void setIncidente(Incidente incidente) {
+        this.incidente = incidente;
+    }
+
+    public List<Incidente> getListaIncidentes() {
+        return listaIncidentes;
+    }
+
+    public void setListaIncidentes(List<Incidente> listaIncidentes) {
+        this.listaIncidentes = listaIncidentes;
+    }
+
+    public boolean isBoolEditar() {
+        return boolEditar;
+    }
+
+    public void setBoolEditar(boolean boolEditar) {
+        this.boolEditar = boolEditar;
+    }
     
+    public void editarInidente(){
+        System.out.println("modifivcar");
+      boolEditar = true;  
+    }
+    public void actualizarIncidente(){
+        System.out.println("guardo la modificación");
+    }
     
+    public void cancelarActualizarIncidente(){
+        System.out.println("Cancelo modificación");
+         boolEditar = false;  
+    }
+    
+    public void eliminarIncidente(Incidente incidente) {
+        System.out.println("Elimino incidente");
+        listaIncidentes.remove(incidente);
+    }
       public void cargarBarrio() {
         listabarrios = new ArrayList<Barrio>();
         lstbarrio =  new ArrayList<Barrio>();
@@ -202,7 +245,28 @@ public class Controlador {
       
           return listatipoingresoincidente;
       }
-      
+  
+      public void guardarIncidente(){
+          
+          incidente.setInc_codigoIncidente(1);
+          incidente.setComuna(comuna);
+          incidente.setBarrio(barrio);
+          incidente.setInc_fechaIncidente(new Date());
+          incidente.setTipo_incidente(tipoInscidente);
+          incidente.setTipo_ingreso_incidente(tipoIngresoInsidente);
+          incidente.getInc_descripcionIncidente();
+          getListaIncidentes().add(incidente);
+          incidente=new Incidente();
+          
+          for (Incidente inci : listaIncidentes) {
+              
+              System.out.println("hhh " + inci.getInc_descripcionIncidente());
+              System.out.println("hhh " + inci.getBarrio().getBar_nombre());
+              System.out.println("hhh " + inci.getComuna().getCom_nombre());
+              
+          }
+       
+      }
 
     public String ValidarUsuario() {
 

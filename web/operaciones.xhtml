@@ -10,7 +10,7 @@
 
     <h:form>
         <center>
-            <p:accordionPanel>  
+            <p:accordionPanel style="width:700px;">  
                 <p:tab title="Ingresar Incidente">  
                     <h:panelGrid columns="2" cellpadding="10">  
                         <p:graphicImage value="/images/godfather/godfather1.jpg" />  
@@ -22,26 +22,32 @@
 
                                 <h:outputLabel id="outputLabelComuna" value="Seleccione La comuna:" />
                                 <h:selectOneMenu id="selectOneMenuComuna" value="#{Controlador.comuna.com_codigo}">
-                                    <f:selectItem itemLabel="Seleccione" itemValue="1" />  
+                                    <!--<f:selectItem itemLabel="Seleccione" itemValue="1" />-->  
                                     <f:selectItems value="#{Controlador.listacomunas}" var="comuna" itemLabel="#{comuna.com_nombre}" itemValue="#{comuna.com_codigo}" />                              
                                     <p:ajax update="selectOneMenuBarrio" event="change"
                                             listener="#{Controlador.cargarBarrio()}" /> 
                                 </h:selectOneMenu>
 
-                                <h:outputLabel id="outputLabelBarrio" value="Barrio" style="width: 100%"/>
+                                <h:outputLabel id="outputLabelBarrio" value="Seleccione el Barrio" style="width: 100%"/>
                                 <h:selectOneMenu id="selectOneMenuBarrio" value="#{Controlador.barrio.bar_codigo}" style="width: 100%">
                                     <f:selectItem itemLabel="Seleccione" itemValue="0" />  
                                     <f:selectItems value="#{Controlador.lstbarrio}" var="barrio" itemLabel="#{barrio.bar_nombre}" itemValue="#{barrio.bar_codigo}" />                              
                                 </h:selectOneMenu>
 
-                                <h:outputLabel id="outputLabelTipoIncidencia" value="Tipo Incidencia" style="width: 100%"/>
+                                <h:outputLabel id="outputLabelTipoIncidencia" value="Seleccione el Tipo de Incidencia" style="width: 100%"/>
                                 <h:selectOneMenu id="selectOneMenuTipoIncidencia" value="#{Controlador.tipoInscidente.tipinc_codigo}" style="width: 100%">
-                                    <f:selectItem itemLabel="Seleccione" itemValue="" />  
-                                    <f:selectItem itemLabel="#{Controlador.listaTipoInscidentes}" itemValue="#{Controlador.tipoInscidente.tipinc_codigo}" />                              
+<!--                                    <f:selectItem itemLabel="Seleccione" itemValue="0" />  -->
+                                    <f:selectItems value="#{Controlador.listaTipoInscidentes}" var="tipoincidente" itemLabel="#{tipoincidente.tipinc_descripcion}" itemValue="#{tipoincidente.tipinc_codigo}" />                              
+                                </h:selectOneMenu>
+                                
+                                <h:outputLabel id="outputLabelTipoIngresoIncidencia" value="Seleccione el Tipo de ingreso de Incidencia" style="width: 100%"/>
+                                <h:selectOneMenu id="selectOneMenuTipoIngresoIncidencia" value="#{Controlador.tipoIngresoInsidente.tii_codigo}" style="width: 100%">
+                                    <!--<f:selectItem itemLabel="Seleccione" itemValue="0" />-->  
+                                    <f:selectItems value="#{Controlador.listatipoingresoincidente}" var="tipoingrsoincidente" itemLabel="#{tipoingrsoincidente.tii_descripcion}" itemValue="#{tipoingrsoincidente.tii_codigo}" />                              
                                 </h:selectOneMenu>              
 
 
-                                <h:outputLabel id="outputLabelDescripcion" value="Descripción" style="width: 100%"/>
+                                <h:outputLabel id="outputLabelDescripcion" value="Ingrese la Descripción del incidente" style="width: 100%"/>
                                 <h:inputText id="inputTextDescripcion" value="#{administrador.incidente.inc_descripcion}" title="Descripción" style="width: 100%"/>
                             </p:panelGrid>
 

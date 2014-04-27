@@ -13,6 +13,7 @@ import javax.faces.context.FacesContext;
 import sri_clases.Barrio;
 import sri_clases.Comuna;
 import sri_clases.Incidente;
+import sri_clases.TipoIngresoInsidente;
 import sri_clases.TipoInscidente;
 import sri_clases.Usuario;
 
@@ -33,6 +34,8 @@ public class Controlador {
     private List<Barrio>lstbarrio=new ArrayList<Barrio>();
     private List<TipoInscidente> listaTipoInscidentes=new ArrayList<TipoInscidente>();
     private TipoInscidente tipoInscidente = new TipoInscidente();
+    private TipoIngresoInsidente tipoIngresoInsidente = new TipoIngresoInsidente();
+    private List<TipoIngresoInsidente> listatipoingresoincidente = new ArrayList<TipoIngresoInsidente>();
     
 
     public Controlador() {
@@ -40,6 +43,7 @@ public class Controlador {
         CargarBarrios();
         CargarComunas();
         cargarTipoIncidente();
+        cargarTipoIngresoIncidente();
         usuario = new Usuario();
     }
 
@@ -130,13 +134,25 @@ public class Controlador {
     public void setTipoInscidente(TipoInscidente tipoInscidente) {
         this.tipoInscidente = tipoInscidente;
     }
+
+    public TipoIngresoInsidente getTipoIngresoInsidente() {
+        return tipoIngresoInsidente;
+    }
+
+    public void setTipoIngresoInsidente(TipoIngresoInsidente tipoIngresoInsidente) {
+        this.tipoIngresoInsidente = tipoIngresoInsidente;
+    }
+
+    public List<TipoIngresoInsidente> getListatipoingresoincidente() {
+        return listatipoingresoincidente;
+    }
+
+    public void setListatipoingresoincidente(List<TipoIngresoInsidente> listatipoingresoincidente) {
+        this.listatipoingresoincidente = listatipoingresoincidente;
+    }
     
     
-    
-   
-      
       public void cargarBarrio() {
-          cargarTipoIncidente();
         listabarrios = new ArrayList<Barrio>();
         lstbarrio =  new ArrayList<Barrio>();
         listabarrios = CargarBarrios();     
@@ -148,22 +164,45 @@ public class Controlador {
       
       }
       
-      public void cargarTipoIncidente(){
+      public List<TipoInscidente> cargarTipoIncidente(){
           
           tipoInscidente.setTipinc_codigo(1);
           tipoInscidente.setTipinc_descripcion("Violento");
           getListaTipoInscidentes().add(tipoInscidente);
-          
-          tipoInscidente=new TipoInscidente();
+          tipoInscidente = new TipoInscidente();
           tipoInscidente.setTipinc_codigo(2);
           tipoInscidente.setTipinc_descripcion("No Violento");
           getListaTipoInscidentes().add(tipoInscidente);
-          
+          System.out.println("tipo2"+tipoInscidente.getTipinc_codigo());
           for (TipoInscidente tipoInscidente : listaTipoInscidentes) {
               System.out.println("incidente" + tipoInscidente.getTipinc_descripcion());
           }
-          
+          return listaTipoInscidentes;
       }
+      
+      public List<TipoIngresoInsidente> cargarTipoIngresoIncidente(){
+          
+          tipoIngresoInsidente.setTii_codigo(1);
+          tipoIngresoInsidente.setTii_descripcion("Via Movil");
+          getListatipoingresoincidente().add(tipoIngresoInsidente);
+          tipoIngresoInsidente = new TipoIngresoInsidente();
+          tipoIngresoInsidente.setTii_codigo(2);
+          tipoIngresoInsidente.setTii_descripcion("Via Web");
+          getListatipoingresoincidente().add(tipoIngresoInsidente);
+          tipoIngresoInsidente = new TipoIngresoInsidente();
+          tipoIngresoInsidente.setTii_codigo(3);
+          tipoIngresoInsidente.setTii_descripcion("Via Asesor en linea");
+          getListatipoingresoincidente().add(tipoIngresoInsidente);
+          
+          for (TipoIngresoInsidente tii : listatipoingresoincidente) {
+              
+              System.out.println("tipo ingreso incidente " + tii.getTii_descripcion() );
+              
+          }
+      
+          return listatipoingresoincidente;
+      }
+      
 
     public String ValidarUsuario() {
 

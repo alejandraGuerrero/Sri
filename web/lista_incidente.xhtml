@@ -63,17 +63,17 @@
                 </p:column>  
 
                 <p:column rendered="#{!Controlador.boolEditar}" headerText="Editar"  style="width:24%">  
-                    <p:commandButton immediate="true" update="datatablelistaincidente" action="#{Controlador.editarInidente()}" value="Editar" /> 
+                    <p:commandButton immediate="true" update="datatablelistaincidente" action="#{Controlador.editarInidente()}" value="Editar"  style="border-radius: 10px!important;color: #205B91;background: #C0D2E2;" /> 
                 </p:column> 
                 
                  <p:column rendered="#{Controlador.boolEditar}" headerText="Editar"  style="width:24%">  
-                     <p:commandButton  update="datatablelistaincidente" action="#{Controlador.actualizarIncidente()}" value="Guardar" /> 
-                     <p:commandButton  update="datatablelistaincidente" action="#{Controlador.cancelarActualizarIncidente()}" value="Cancelar" /> 
+                     <p:commandButton  update="datatablelistaincidente" action="#{Controlador.actualizarIncidente()}" value="Guardar"  style="border-radius: 10px!important;color: #205B91;background: #C0D2E2;"/> 
+                     <p:commandButton  update="datatablelistaincidente" action="#{Controlador.cancelarActualizarIncidente()}" value="Cancelar"  style="border-radius: 10px!important;color: #205B91;background: #C0D2E2;" /> 
                 </p:column> 
 
                 <p:column rendered="#{!Controlador.boolEditar}" headerText="Eliminar" style="width:24%">  
                     <p:commandButton  immediate="true" update="datatablelistaincidente" value="Eliminar"
-                                       action="#{Controlador.eliminarIncidente(incidente)}"/>
+                                       action="#{Controlador.eliminarIncidente(incidente)}"  style="border-radius: 10px!important;color: #205B91;background: #C0D2E2;"/>
                 </p:column> 
 
             </p:dataTable> 

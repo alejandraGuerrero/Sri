@@ -31,15 +31,14 @@ public class Controlador {
     private Comuna comuna = new Comuna();
     private String password;
     private String password2;
-    private List<Barrio>lstbarrio=new ArrayList<Barrio>();
-    private List<TipoInscidente> listaTipoInscidentes=new ArrayList<TipoInscidente>();
+    private List<Barrio> lstbarrio = new ArrayList<Barrio>();
+    private List<TipoInscidente> listaTipoInscidentes = new ArrayList<TipoInscidente>();
     private TipoInscidente tipoInscidente = new TipoInscidente();
     private TipoIngresoInsidente tipoIngresoInsidente = new TipoIngresoInsidente();
     private List<TipoIngresoInsidente> listatipoingresoincidente = new ArrayList<TipoIngresoInsidente>();
     private Incidente incidente = new Incidente();
-    private List<Incidente> listaIncidentes = new  ArrayList<Incidente>();
-    private boolean boolEditar=false;
-    
+    private List<Incidente> listaIncidentes = new ArrayList<Incidente>();
+    private boolean boolEditar = false;
 
     public Controlador() {
         CargarUsuarios();
@@ -177,105 +176,107 @@ public class Controlador {
     public void setBoolEditar(boolean boolEditar) {
         this.boolEditar = boolEditar;
     }
-    
-    public void editarInidente(){
+
+    public void editarInidente() {
         System.out.println("modifivcar");
-      boolEditar = true;  
+        boolEditar = true;
     }
-    public void actualizarIncidente(){
+
+    public void actualizarIncidente() {
         System.out.println("guardo la modificación");
     }
-    
-    public void cancelarActualizarIncidente(){
+
+    public void cancelarActualizarIncidente() {
         System.out.println("Cancelo modificación");
-         boolEditar = false;  
+        boolEditar = false;
     }
-    
+
     public void eliminarIncidente(Incidente incidente) {
         System.out.println("Elimino incidente");
         listaIncidentes.remove(incidente);
     }
-      public void cargarBarrio() {
+
+    public void cargarBarrio() {
         listabarrios = new ArrayList<Barrio>();
-        lstbarrio =  new ArrayList<Barrio>();
-        listabarrios = CargarBarrios();     
-        for (Barrio ls : listabarrios){
-            if (ls.getComuna() == getComuna().getCom_codigo()){
-              lstbarrio.add(ls);                
-            }          
-        }  
-      
-      }
-      
-      public List<TipoInscidente> cargarTipoIncidente(){
-          
-          tipoInscidente.setTipinc_codigo(1);
-          tipoInscidente.setTipinc_descripcion("Violento");
-          getListaTipoInscidentes().add(tipoInscidente);
-          tipoInscidente = new TipoInscidente();
-          tipoInscidente.setTipinc_codigo(2);
-          tipoInscidente.setTipinc_descripcion("No Violento");
-          getListaTipoInscidentes().add(tipoInscidente);
-          System.out.println("tipo2"+tipoInscidente.getTipinc_codigo());
-          for (TipoInscidente tipoInscidente : listaTipoInscidentes) {
-              System.out.println("incidente" + tipoInscidente.getTipinc_descripcion());
-          }
-          return listaTipoInscidentes;
-      }
-      
-      public List<TipoIngresoInsidente> cargarTipoIngresoIncidente(){
-          
-          tipoIngresoInsidente.setTii_codigo(1);
-          tipoIngresoInsidente.setTii_descripcion("Via Movil");
-          getListatipoingresoincidente().add(tipoIngresoInsidente);
-          tipoIngresoInsidente = new TipoIngresoInsidente();
-          tipoIngresoInsidente.setTii_codigo(2);
-          tipoIngresoInsidente.setTii_descripcion("Via Web");
-          getListatipoingresoincidente().add(tipoIngresoInsidente);
-          tipoIngresoInsidente = new TipoIngresoInsidente();
-          tipoIngresoInsidente.setTii_codigo(3);
-          tipoIngresoInsidente.setTii_descripcion("Via Asesor en linea");
-          getListatipoingresoincidente().add(tipoIngresoInsidente);
-          
-          for (TipoIngresoInsidente tii : listatipoingresoincidente) {
-              
-              System.out.println("tipo ingreso incidente " + tii.getTii_descripcion() );
-              
-          }
-      
-          return listatipoingresoincidente;
-      }
-  
-      public void guardarIncidente(){
-          
-          incidente.setInc_codigoIncidente(1);
-          incidente.setComuna(comuna);
-          incidente.setBarrio(barrio);
-          incidente.setInc_fechaIncidente(new Date());
-          incidente.setTipo_incidente(tipoInscidente);
-          incidente.setTipo_ingreso_incidente(tipoIngresoInsidente);
-          incidente.getInc_descripcionIncidente();
-          getListaIncidentes().add(incidente);
-          incidente=new Incidente();
-          
-          for (Incidente inci : listaIncidentes) {
-              
-              System.out.println("hhh " + inci.getInc_descripcionIncidente());
-              System.out.println("hhh " + inci.getBarrio().getBar_nombre());
-              System.out.println("hhh " + inci.getComuna().getCom_nombre());
-              
-          }
-       
-      }
+        lstbarrio = new ArrayList<Barrio>();
+        listabarrios = CargarBarrios();
+        for (Barrio ls : listabarrios) {
+            if (ls.getComuna() == getComuna().getCom_codigo()) {
+                lstbarrio.add(ls);
+            }
+        }
+
+    }
+
+    public List<TipoInscidente> cargarTipoIncidente() {
+
+        tipoInscidente.setTipinc_codigo(1);
+        tipoInscidente.setTipinc_descripcion("Violento");
+        getListaTipoInscidentes().add(tipoInscidente);
+        tipoInscidente = new TipoInscidente();
+        tipoInscidente.setTipinc_codigo(2);
+        tipoInscidente.setTipinc_descripcion("No Violento");
+        getListaTipoInscidentes().add(tipoInscidente);
+        System.out.println("tipo2" + tipoInscidente.getTipinc_codigo());
+        for (TipoInscidente tipoInscidente : listaTipoInscidentes) {
+            System.out.println("incidente" + tipoInscidente.getTipinc_descripcion());
+        }
+        return listaTipoInscidentes;
+    }
+
+    public List<TipoIngresoInsidente> cargarTipoIngresoIncidente() {
+
+        tipoIngresoInsidente.setTii_codigo(1);
+        tipoIngresoInsidente.setTii_descripcion("Via Movil");
+        getListatipoingresoincidente().add(tipoIngresoInsidente);
+        tipoIngresoInsidente = new TipoIngresoInsidente();
+        tipoIngresoInsidente.setTii_codigo(2);
+        tipoIngresoInsidente.setTii_descripcion("Via Web");
+        getListatipoingresoincidente().add(tipoIngresoInsidente);
+        tipoIngresoInsidente = new TipoIngresoInsidente();
+        tipoIngresoInsidente.setTii_codigo(3);
+        tipoIngresoInsidente.setTii_descripcion("Via Asesor en linea");
+        getListatipoingresoincidente().add(tipoIngresoInsidente);
+
+        for (TipoIngresoInsidente tii : listatipoingresoincidente) {
+
+            System.out.println("tipo ingreso incidente " + tii.getTii_descripcion());
+
+        }
+
+        return listatipoingresoincidente;
+    }
+
+    public void guardarIncidente() {
+
+        incidente.setInc_codigoIncidente(1);
+        incidente.setComuna(comuna);
+        incidente.setBarrio(barrio);
+        incidente.setInc_fechaIncidente(new Date());
+        incidente.setTipo_incidente(tipoInscidente);
+        incidente.setTipo_ingreso_incidente(tipoIngresoInsidente);
+        incidente.getInc_descripcionIncidente();
+        getListaIncidentes().add(incidente);
+        incidente = new Incidente();
+
+        for (Incidente inci : listaIncidentes) {
+
+            System.out.println("hhh " + inci.getInc_descripcionIncidente());
+            System.out.println("hhh " + inci.getBarrio().getBar_nombre());
+            System.out.println("hhh " + inci.getComuna().getCom_nombre());
+
+        }
+
+    }
 
     public String ValidarUsuario() {
 
         if (!((usuario.getTelefono().equals("")) && (usuario.getPassword().equals("")))) {
-           for(int w=0; w<listausuarios.size(); w++){
-               System.out.println("www " + w);
+            for (int w = 0; w < listausuarios.size(); w++) {
+                System.out.println("www " + w);
                 System.out.println("usuario = " + usuario.getTelefono());
-                if(listausuarios.get(w).getTelefono().equals(usuario.getTelefono()) && 
-                        listausuarios.get(w).getPassword().equals(usuario.getPassword()) ){
+                if (listausuarios.get(w).getTelefono().equals(usuario.getTelefono())
+                        && listausuarios.get(w).getPassword().equals(usuario.getPassword())) {
                     FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("El usuario ingresado no Existe."));
                     return "operaciones";
                 } else {
@@ -310,9 +311,9 @@ public class Controlador {
     }
 
     public Usuario validarUsuario(String tel, String contr) {
-        
+
         for (Usuario usuario1 : listausuarios) {
-              if (usuario.getTelefono().equals(usuario1.getTelefono()) && usuario.getPassword().equals(usuario1.getPassword())) {
+            if (usuario.getTelefono().equals(usuario1.getTelefono()) && usuario.getPassword().equals(usuario1.getPassword())) {
                 return usuario1;
             } else {
 
@@ -344,7 +345,7 @@ public class Controlador {
         usuario.setUsu_direccion("--------------");
         usuario.setUsu_fechaRegistro(new Date());
         getListausuarios().add(usuario);
-        
+
         usuario.setTelefono("3002302551");
         usuario.setUsu_nombre("Administrador");
         usuario.setPassword("123456");

@@ -8,72 +8,85 @@
     <h:head>
         <title>SRI-MANIZALES</title>
     </h:head>
+    <body  style="background-image:url(resources/fondo.jpg); background-repeat:no-repeat;" >
+        <h:form>
+            <center>
+                <h:panelGrid columns="3" cellpadding="10">  
+                    <p:graphicImage value="/resources/logo_opt.png" />  
+                    <h:outputText value="Bienvenidos Al Sistema de Registro de Incidentes de Manizales" style="font-size:22px;color: #205B91;
+                                  font-family: inherit;
+                                  font-family:Homer Simpson,cursive;"/> 
+                    <h:commandButton value="Cerrar Sesion"  action="#{Controlador.cerrarSesion()}"/>
+                </h:panelGrid>
+                <p:accordionPanel style="width:1000px;">  
+                    <p:tab title="Ingresar Incidente" >  
+                        <h:panelGrid columns="2" cellpadding="10">  
+                            <p:graphicImage value="/resources/pc.png" />  
+                            <h:form id="formregistroinci">
+                                <center>
+                                    <h:outputLabel value="Registro Incidencia"/>
+                                    <br/>
+                                    <br/>
+                                </center>
+                                <p:panelGrid columns="2"  style="width: 95%">
 
-    <h:form>
-        <center>
-            <p:accordionPanel style="width:700px;">  
-                <p:tab title="Ingresar Incidente">  
-                    <h:panelGrid columns="2" cellpadding="10">  
-                        <p:graphicImage value="/images/godfather/godfather1.jpg" />  
-                        <h:form id="formregistroinci">
-                            <center>
-                                <h:outputLabel value="Registro Incidencia"/>
-                            </center>
-                            <p:panelGrid columns="2"  style="width: 95%">
+                                    <h:outputLabel id="outputLabelComuna" value="Seleccione La comuna:" />
+                                    <h:selectOneMenu id="selectOneMenuComuna" value="#{Controlador.comuna.com_codigo}">
+                                        <!--<f:selectItem itemLabel="Seleccione" itemValue="1" />-->  
+                                        <f:selectItems value="#{Controlador.listacomunas}" var="comuna" itemLabel="#{comuna.com_nombre}" itemValue="#{comuna.com_codigo}" />                              
+                                        <p:ajax update="selectOneMenuBarrio" event="change"
+                                                listener="#{Controlador.cargarBarrio()}" /> 
+                                    </h:selectOneMenu>
 
-                                <h:outputLabel id="outputLabelComuna" value="Seleccione La comuna:" />
-                                <h:selectOneMenu id="selectOneMenuComuna" value="#{Controlador.comuna.com_codigo}">
-                                    <!--<f:selectItem itemLabel="Seleccione" itemValue="1" />-->  
-                                    <f:selectItems value="#{Controlador.listacomunas}" var="comuna" itemLabel="#{comuna.com_nombre}" itemValue="#{comuna.com_codigo}" />                              
-                                    <p:ajax update="selectOneMenuBarrio" event="change"
-                                            listener="#{Controlador.cargarBarrio()}" /> 
-                                </h:selectOneMenu>
+                                    <h:outputLabel id="outputLabelBarrio" value="Seleccione el Barrio" style="width: 100%"/>
+                                    <h:selectOneMenu id="selectOneMenuBarrio" value="#{Controlador.barrio.bar_codigo}" style="width: 100%">
+                                        <f:selectItem itemLabel="Seleccione" itemValue="0" />  
+                                        <f:selectItems value="#{Controlador.lstbarrio}" var="barrio" itemLabel="#{barrio.bar_nombre}" itemValue="#{barrio.bar_codigo}" />                              
+                                    </h:selectOneMenu>
 
-                                <h:outputLabel id="outputLabelBarrio" value="Seleccione el Barrio" style="width: 100%"/>
-                                <h:selectOneMenu id="selectOneMenuBarrio" value="#{Controlador.barrio.bar_codigo}" style="width: 100%">
-                                    <f:selectItem itemLabel="Seleccione" itemValue="0" />  
-                                    <f:selectItems value="#{Controlador.lstbarrio}" var="barrio" itemLabel="#{barrio.bar_nombre}" itemValue="#{barrio.bar_codigo}" />                              
-                                </h:selectOneMenu>
+                                    <h:outputLabel id="outputLabelTipoIncidencia" value="Seleccione el Tipo de Incidencia" style="width: 100%"/>
+                                    <h:selectOneMenu id="selectOneMenuTipoIncidencia" value="#{Controlador.tipoInscidente.tipinc_codigo}" style="width: 100%">
+                                        <!--                                    <f:selectItem itemLabel="Seleccione" itemValue="0" />  -->
+                                        <f:selectItems value="#{Controlador.listaTipoInscidentes}" var="tipoincidente" itemLabel="#{tipoincidente.tipinc_descripcion}" itemValue="#{tipoincidente.tipinc_codigo}" />                              
+                                    </h:selectOneMenu>
 
-                                <h:outputLabel id="outputLabelTipoIncidencia" value="Seleccione el Tipo de Incidencia" style="width: 100%"/>
-                                <h:selectOneMenu id="selectOneMenuTipoIncidencia" value="#{Controlador.tipoInscidente.tipinc_codigo}" style="width: 100%">
-<!--                                    <f:selectItem itemLabel="Seleccione" itemValue="0" />  -->
-                                    <f:selectItems value="#{Controlador.listaTipoInscidentes}" var="tipoincidente" itemLabel="#{tipoincidente.tipinc_descripcion}" itemValue="#{tipoincidente.tipinc_codigo}" />                              
-                                </h:selectOneMenu>
-                                
-                                <h:outputLabel id="outputLabelTipoIngresoIncidencia" value="Seleccione el Tipo de ingreso de Incidencia" style="width: 100%"/>
-                                <h:selectOneMenu id="selectOneMenuTipoIngresoIncidencia" value="#{Controlador.tipoIngresoInsidente.tii_codigo}" style="width: 100%">
-                                    <!--<f:selectItem itemLabel="Seleccione" itemValue="0" />-->  
-                                    <f:selectItems value="#{Controlador.listatipoingresoincidente}" var="tipoingrsoincidente" itemLabel="#{tipoingrsoincidente.tii_descripcion}" itemValue="#{tipoingrsoincidente.tii_codigo}" />                              
-                                </h:selectOneMenu>              
+                                    <h:outputLabel id="outputLabelTipoIngresoIncidencia" value="Seleccione el Tipo de ingreso de Incidencia" style="width: 100%"/>
+                                    <h:selectOneMenu id="selectOneMenuTipoIngresoIncidencia" value="#{Controlador.tipoIngresoInsidente.tii_codigo}" style="width: 100%">
+                                        <!--<f:selectItem itemLabel="Seleccione" itemValue="0" />-->  
+                                        <f:selectItems value="#{Controlador.listatipoingresoincidente}" var="tipoingrsoincidente" itemLabel="#{tipoingrsoincidente.tii_descripcion}" itemValue="#{tipoingrsoincidente.tii_codigo}" />                              
+                                    </h:selectOneMenu>              
 
 
-                                <h:outputLabel id="outputLabelDescripcion" value="Ingrese la Descripción del incidente" style="width: 100%"/>
-                                <h:inputTextarea id="inputTextDescripcion" value="#{Controlador.incidente.inc_descripcionIncidente}" title="Descripción" style="width: 100%"/>
-                            </p:panelGrid>
-                            <h:commandButton value="Registrar" action="#{Controlador.guardarIncidente()}"/>
-                            
-                        </h:form>  
-                    </h:panelGrid>  
-                </p:tab>  
-                <p:tab title="Listar Incidente">  
-                    <h:panelGrid columns="2" cellpadding="10">  
-                        <p:graphicImage value="/images/godfather/godfather2.jpg" />  
-                        <ui:include src="/lista_incidente.xhtml" />
-                        
-                    </h:panelGrid>  
-                </p:tab>  
-                <p:tab title="Godfather Part III">  
-                    <h:panelGrid columns="2" cellpadding="10">  
-                        <p:graphicImage value="/images/godfather/godfather3.jpg" />  
-                        <h:outputText value="After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family.   
-                                      Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate." />  
-                    </h:panelGrid>  
-                </p:tab>  
-            </p:accordionPanel>  
+                                    <h:outputLabel id="outputLabelDescripcion" value="Ingrese la Descripción del incidente" style="width: 100%"/>
+                                    <h:inputTextarea id="inputTextDescripcion" value="#{Controlador.incidente.inc_descripcionIncidente}" title="Descripción" style="width: 100%"/>
+                                </p:panelGrid>
+                                <center>
+                                    <br/>
+                                    <br/>
+                                    <h:commandButton value="Registrar" action="#{Controlador.guardarIncidente()}"/>
+                                </center>
+                            </h:form>  
+                        </h:panelGrid>  
+                    </p:tab>  
+                    <p:tab title="Listar Incidente">  
+                        <h:panelGrid columns="1" cellpadding="10">  
 
-        </center>
-    </h:form>
+                            <p:graphicImage value="/resources/ama.png" style="position: relative;left: 370px!important;" />  
+                            <ui:include src="/lista_incidente.xhtml" />
 
+                        </h:panelGrid>  
+                    </p:tab>  
+                    <p:tab title="Reportes">  
+                        <h:panelGrid columns="2" cellpadding="10">  
+                            <p:graphicImage value="/images/godfather/godfather3.jpg" />  
+                            <h:outputText value="After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family.   
+                                          Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate." />  
+                        </h:panelGrid>  
+                    </p:tab>  
+                </p:accordionPanel>  
+                
+            </center>
+        </h:form>
+    </body>
 </html>
 
